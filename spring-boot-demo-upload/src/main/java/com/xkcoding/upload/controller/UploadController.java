@@ -60,6 +60,7 @@ public class UploadController {
 		String rawFileName = StrUtil.subBefore(fileName, ".", true);
 		String fileType = StrUtil.subAfter(fileName, ".", true);
 		String localFilePath = StrUtil.appendIfMissing(fileTempPath, "/") + rawFileName + "-" + DateUtil.current(false) + "." + fileType;
+    System.out.println("-->"+localFilePath);
 		try {
 			file.transferTo(new File(localFilePath));
 		} catch (IOException e) {

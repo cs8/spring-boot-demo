@@ -22,4 +22,9 @@ public class IndexController {
 	public String index() {
 		return "This is a Spring Boot Admin Client.";
 	}
+
+  @GetMapping(value = {"/index2", "/index1"})
+  public String index1() {
+    return "This is a Spring Boot Admin Client111111.";
+  }
 }

@@ -41,12 +41,14 @@
 					</i-button>
 				</div>
 				<div>
-					<div v-if="local.log.status != 0">状态：{{local.log.message}}</div>
+					<!--<div v-if="local.log.status != 0">状态：{{local.log.message}}</div>
 					<div v-if="local.log.status === 200">文件名：{{local.log.fileName}}</div>
-					<div v-if="local.log.status === 200">文件路径：{{local.log.filePath}}</div>
+					<div v-if="local.log.status === 200">文件路径：{{local.log.filePath}}</div>-->
+          <img v-if="local.log.status === 200" :src="getImgUrl(local.log.filePath)" style="width: 200px">
 				</div>
 			</Card>
 		</i-col>
+    <!-- 注释掉七牛
 		<i-col span="12">
 			<Card style="height: 300px;">
 				<p slot="title">
@@ -78,8 +80,10 @@
 				</div>
 			</Card>
 		</i-col>
+		-->
 	</Row>
 </div>
+
 <script>
 	new Vue({
 		el: '#app',
@@ -96,6 +100,7 @@
 					filePath: ""
 				}
 			},
+
 			yun: {
 				// 选择文件后，将 beforeUpload 返回的 file 保存在这里，后面会用到
 				file: null,
@@ -110,6 +115,9 @@
 			}
 		},
 		methods: {
+      getImgUrl(icon){
+        return ("image/"+icon);
+      },
 			// beforeUpload 在返回 false 或 Promise 时，会停止自动上传，这里我们将选择好的文件 file 保存在 data里，并 return false
 			handleLocalUpload(file) {
 				this.local.file = file;

@@ -29,11 +29,10 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 	@PostMapping("/login")
 	public ModelAndView login(User user, HttpServletRequest request) {
+	  //对比数据库中数据
 		ModelAndView mv = new ModelAndView();
-
 		mv.addObject(user);
 		mv.setViewName("redirect:/");
-
 		request.getSession().setAttribute("user", user);
 		return mv;
 	}
